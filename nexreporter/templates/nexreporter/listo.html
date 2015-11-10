@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <title>Parser</title>
+    <link rel="stylesheet" href="{% static 'libs/bootstrap/dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" />
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row" style="margin-top:2em; margin-bottom:3em">
+            <div class="col-md-12">
+                <h2>Liisto!</h2>
+            </div>
+        </div>
+        <div class="row" style="margin-top:2em; margin-bottom:3em">
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="{% url 'index' %}">Regresar!</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/moment/min/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script>
+    </script>
+</body>
+</html>

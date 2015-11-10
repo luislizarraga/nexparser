@@ -1,0 +1,112 @@
+{% load static %}
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <title>Parser</title>
+    <link rel="stylesheet" href="{% static 'libs/bootstrap/dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" />
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row" style="margin-top:2em; margin-bottom:3em">
+            <div class="col-md-12">
+                <h3>Holis</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" action="{% url 'index' %}" enctype="multipart/form-data" method="post">{% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Cliente</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="client" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Factura</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="invoice">
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:0em">
+                        <h4>Intervalo</h4>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Inicio</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" name="intervalo_inicio" id="intervalo_inicio" required>
+                        </div>
+                        <label class="col-sm-offset-1 col-sm-2 control-label">Fin</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" name="intervalo_fin" id="intervalo_fin" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:2em">
+                        <h4>Archivo</h4>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">CSV</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="file" name="CSV" id="intervalo_select" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:2em">
+                        <h4><strong>Paquetes</strong></h4>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:2em">
+                        <button class="btn btn-primary" id="add_input">Añadir</button>
+                    </div>
+                    <input id="paquetes_extra" type="hidden" name="extra" value="0">
+                    <div id="paquetes" class="col-sm-12" style="margin-top:2em"></div>
+                    <div class="col-sm-12" style="margin-top:3em">
+                        <button class="btn btn-success" id="submit_button">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/moment/min/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script>
+        jQuery(document).ready(function() {    
+            var paquetes_num = 0;
+            $('#intervalo_inicio').datetimepicker();
+            $('#intervalo_fin').datetimepicker();
+
+            $('#add_input').click(function(e){
+                e.preventDefault();
+                var input = '<div class="form-group">'+
+                       '<div class="col-sm-5"><input class="form-control" type="text" name="nombre_'+paquetes_num+'" placeholder="Nombre"></div>'+
+                       '<div class="col-sm-3"><input class="form-control" type="text" name="total_'+paquetes_num+'" placeholder="Total"></div>'+
+                       '<div class="col-sm-3"><input class="form-control" type="text" name="cantidad_'+paquetes_num+'" placeholder="Cantidad"></div>'+
+                    '</div>'
+                $('#paquetes').append(input);
+                paquetes_num++;
+                $('#paquetes_extra').val(paquetes_num);
+            });
+
+            // $('#submit_button').click(function(e){
+            //     setTimeout(function(){
+            //         window.location.replace('/listo')
+            //     },1000);
+            // });
+        });
+    </script>
+</body>
+</html>
