@@ -1,0 +1,5 @@
+Django==1.8.5
+MySQL-python==1.2.5
+XlsxWriter==0.7.6
+python-dateutil==2.4.2
+six==1.10.0
