@@ -496,6 +496,59 @@ def write_excel(data, dir_name, month, extra_info):
         n = n+1
         rows = rows+1
 
+    #------------- Info Llamadas Mexico Celular ----------------
+    
+    worksheet.set_row(n,25)
+    worksheet.set_row(n+1,1.95)
+    worksheet.write(n,1, '',format1)
+    worksheet.write(n,2, 'General Salidas Internacional', format2)
+    worksheet.write(n,6, 'Destino')
+    worksheet.write(n,8, 'Minutos')
+    worksheet.write(n,9, 'Llamadas')
+    worksheet.write(n+1,1, '', format1)
+    worksheet.write(n+1,2, '', format1)
+    worksheet.write(n+1,3, '', format1)
+    worksheet.write(n+1,4, '', format1)
+    worksheet.write(n+1,5, '', format1)
+    worksheet.write(n+1,6, '', format1)
+    worksheet.write(n+1,7, '', format1)
+    worksheet.write(n+1,8, '', format1)
+    worksheet.write(n+1,9, '', format1)
+
+    n = n+2
+    others = data[6]
+    rows = 0
+    for l in sorted(others.items(), key=lambda e: e[1][1], reverse=True):
+    # for l in cell:
+        # if rows%MAX_ROWS == 0:
+        #     rows = 2
+        #     page_breaks.append(n)
+        #     worksheet.set_row(n,25)
+        #     worksheet.set_row(n+1,1.95)
+        #     worksheet.write(n,1, '',format1)
+        #     worksheet.write(n,2, 'General Salidas Mexico Celular', format2)
+        #     worksheet.write(n,6, 'Destino')
+        #     worksheet.write(n,8, 'Minutos')
+        #     worksheet.write(n,9, 'Llamadas')
+        #     worksheet.write(n+1,1, '', format1)
+        #     worksheet.write(n+1,2, '', format1)
+        #     worksheet.write(n+1,3, '', format1)
+        #     worksheet.write(n+1,4, '', format1)
+        #     worksheet.write(n+1,5, '', format1)
+        #     worksheet.write(n+1,6, '', format1)
+        #     worksheet.write(n+1,7, '', format1)
+        #     worksheet.write(n+1,8, '', format1)
+        #     worksheet.write(n+1,9, '', format1)
+        #     n = n+2
+
+        # worksheet.write(n,2,cell[l][0],format3)
+        worksheet.write(n,2,l[1][0],format3)
+        worksheet.write(n,6,l[1][4],format3)
+        worksheet.write(n,8,l[1][1],format3)
+        worksheet.write(n,9,l[1][2],format3)
+        n = n+1
+        rows = rows+1
+
     worksheet.set_v_pagebreaks(page_breaks)
     workbook.close()
 
